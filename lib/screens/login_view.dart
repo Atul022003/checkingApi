@@ -66,6 +66,7 @@ class LoginViewState extends State<LoginView>{
                 obscureText:_obsecurePassword.value,
                 focusNode: passwordFocusNode,
                 decoration: InputDecoration(
+
                     hintText: "Password",
                     prefixIcon: Icon(Icons.lock),
                     suffixIcon:InkWell(
