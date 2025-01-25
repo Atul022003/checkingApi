@@ -78,6 +78,7 @@ class LoginViewState extends State<LoginView>{
                     )
                 ),
               );
+
             }
             ),
             SizedBox(height: height*0.085,),
@@ -103,8 +104,8 @@ class LoginViewState extends State<LoginView>{
             SizedBox(height:height*0.02 ,),
             InkWell(
               onTap: (){
-               // Navigator.pushNamed(context,RoutesName.signup);
-                Navigator.push(context,MaterialPageRoute(builder: (context) => RegisterPage()));
+               Navigator.pushNamed(context,RoutesName.register);
+
               },
               child:  Text("Don't have account ? SignUp"),
             )

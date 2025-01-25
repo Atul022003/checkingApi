@@ -1,9 +1,12 @@
 import 'package:checkingapi/provider/authprovider.dart';
 import 'package:checkingapi/screens/home_screen.dart';
-import 'package:checkingapi/screens/login_page.dart';
 import 'package:checkingapi/screens/login_view.dart';
+import 'package:checkingapi/screens/splsh_view.dart';
 import 'package:checkingapi/services/auth_view_modal.dart';
+import 'package:checkingapi/services/home_view_modal.dart';
 import 'package:checkingapi/services/user_view_modal.dart';
+import 'package:checkingapi/utils/routes/routes.dart';
+import 'package:checkingapi/utils/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +29,8 @@ class MyApp extends StatelessWidget {
           create: (context)=> UserViewModal()),
       ChangeNotifierProvider< AuthViewModal>(
           create: (context)=> AuthViewModal()),
+      ChangeNotifierProvider< HomeViewModal>(
+          create: (context)=> HomeViewModal()),
     ] , child: MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -48,7 +53,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginView()
+      initialRoute:RoutesName.splash,
+      onGenerateRoute: Routes.generateRoute,
     ));
   }
 }

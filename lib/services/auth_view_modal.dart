@@ -1,3 +1,4 @@
+import 'package:checkingapi/modal/register_modal.dart';
 import 'package:checkingapi/services/user_view_modal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -48,8 +49,12 @@ class AuthViewModal with ChangeNotifier{
     setsignUpLoading(true);
     _myRepo.registerApi(data).then((value){
       setsignUpLoading(false);
+      final userPrefrence = Provider.of<UserViewModal>(context,listen:false);
+      userPrefrence.saveRegisterUser(RegisterModal(
+          token: value['token'].toString()
+      ));
       Utils.flushBarErrorMessage("SignUp Succesfull", context);
-      Navigator.pushNamed(context,RoutesName.home);
+      Navigator.pushNamed(context,RoutesName.Home);
       if(kDebugMode){
         print(value.toString());}
     }).onError((error,stackTrace){

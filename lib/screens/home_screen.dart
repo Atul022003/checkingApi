@@ -34,7 +34,8 @@ class HomeScreenState extends State<HomeScreen> {
           InkWell(
             onTap: () {
               userPrefrence.remove().then((value) {
-                Navigator.pushNamed(context, RoutesName.login);
+               // Navigator.pushNamed(context, RoutesName.login);
+                Navigator.pushReplacementNamed(context, RoutesName.login);
               });
             },
             child: Text("Logout"),
@@ -56,7 +57,7 @@ class HomeScreenState extends State<HomeScreen> {
                 return ListView.builder(
                   itemCount: value.mandirList.data?.data!.length ,
                   itemBuilder: (context, index) {
-                    print("image---${value.mandirList.data?.data![index].details.toString() ?? ""}");
+                    print("image---${value.mandirList.data?.data![index].image.toString() ?? ""}");
                     return Card(
                       child: ListTile(
                         leading: Image.network(
@@ -74,7 +75,22 @@ class HomeScreenState extends State<HomeScreen> {
                         subtitle: Text(
                           value.mandirList.data?.data![index].details.toString() ?? "",
                         ),
-                   //  trailing: Text(value.mandirList.data?.data![index].id.toString() ?? ""),
+                    trailing: Column(
+                      children: [
+                        Flexible(child:Text(value.mandirList.data?.data![index].id.toString() ?? ""),),
+                        SizedBox(height: 8,),
+                        ElevatedButton(
+                          onPressed: (){
+                          Navigator.pushNamed(context,RoutesName.Home);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.lightGreen
+
+
+                          ),
+                            child: Text("Mandir Offer"),)
+                      ],
+                    )
                       ),
                     );
                   },
